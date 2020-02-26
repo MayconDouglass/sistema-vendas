@@ -24,7 +24,7 @@ public class ControllerCidades {
     /**
     * recupera Cidades
     * @param pIdCidade
-    * @return ModelCidades
+    * @return ModelCidadess
     */
     public ModelCidades getCidadesController(int pIdCidade){
         return this.daoCidades.getCidadesDAO(pIdCidade);
