@@ -38,6 +38,15 @@ public class ControllerCidades {
     public ArrayList<ModelCidades> getListaCidadesController(){
         return this.daoCidades.getListaCidadesDAO();
     }
+    
+    /**
+    * recupera uma lista de Cidades com base na UF selecionada
+    * @param pUF
+    * @return ArrayList
+    */
+    public ArrayList<ModelCidades> getListaCidadesController(String pUF){
+        return this.daoCidades.getListaCidadesUFDAO(pUF);
+    }
 
     /**
     * atualiza Cidades
