@@ -10,9 +10,14 @@ import controller.ControllerAcesso;
 import controller.ControllerEmpresa;
 import controller.ControllerPerfil;
 import controller.ControllerUsuario;
+import java.awt.AWTException;
 import java.awt.Dimension;
+import java.awt.SystemTray;
+import java.awt.TrayIcon;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import javax.swing.AbstractAction;
 import javax.swing.Action;
 import javax.swing.ImageIcon;
@@ -20,6 +25,7 @@ import javax.swing.InputMap;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
+import javax.swing.JOptionPane;
 import javax.swing.KeyStroke;
 import model.ModelAcesso;
 import model.ModelEmpresa;
@@ -51,9 +57,9 @@ public class viewMainMenu extends javax.swing.JFrame {
         ImageIcon icone = new ImageIcon("./src/Icons/Modulos/Menu.png");
         setIconImage(icone.getImage());
         setTitle(controllerEmpresa.getEmpresaController(1).getEmpRazao());
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
         comandoLicenca();
         initComponents();
-        setExtendedState(JFrame.MAXIMIZED_BOTH);
 
     }
 
@@ -377,6 +383,7 @@ public class viewMainMenu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         teste viewMainLogin2 = new teste();
         Desktop.add(viewMainLogin2);
@@ -498,7 +505,7 @@ public class viewMainMenu extends javax.swing.JFrame {
                 (desktopSize.height - jInternalFrameSize.height) / 2);
     }
 
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JDesktopPane Desktop;
     private javax.swing.JButton jButton1;

@@ -6,8 +6,15 @@
 package Test;
 
 import controller.ControllerAcesso;
+import java.awt.AWTException;
+import java.awt.SystemTray;
+import java.awt.TrayIcon;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import static javax.swing.WindowConstants.HIDE_ON_CLOSE;
 import model.ModelAcesso;
 
 /**
@@ -83,7 +90,58 @@ public class TesteJframe extends javax.swing.JFrame {
             }
         });
     }
+private void Teste() {
+        ImageIcon icone = new ImageIcon("./src/Icons/Modulos/Menu.png");
+        setDefaultCloseOperation(HIDE_ON_CLOSE); // Define o modo de fechamento
+        SystemTray tray = SystemTray.getSystemTray();
+        TrayIcon trayIcon = new TrayIcon(icone.getImage());
+        trayIcon.setImageAutoSize(true);
 
+        /**
+         * Instancia um mouse listener para ser usado no TrayIcon
+         */
+        MouseListener mlOpcoes = new MouseListener() {
+
+            @Override
+            public void mouseClicked(MouseEvent e) {
+               
+                // initComponents();
+            }
+
+            public void mousePressed(MouseEvent e) {
+                JOptionPane.showMessageDialog(rootPane, "teste 2");
+
+            }
+
+            public void mouseReleased(MouseEvent e) {
+                /**
+                 * Se o mouse for clicado com a roda do mouse ou com o botão
+                 * direito fechará a aplicação.
+                 */
+                if (e.getButton() == 2 || e.getButton() == 3) {
+
+                    System.exit(0);
+
+                }
+
+            }
+
+            public void mouseEntered(MouseEvent e) {
+                JOptionPane.showMessageDialog(rootPane, "teste 3");
+            }
+
+            public void mouseExited(MouseEvent e) {
+            }
+        };
+        // adiciona o mouseListener no TrayIcon
+        trayIcon.addMouseListener(mlOpcoes);
+
+        try {
+            // Adiciona o Ícone no SystemTray
+            tray.add(trayIcon);
+        } catch (AWTException e) {
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
 }
