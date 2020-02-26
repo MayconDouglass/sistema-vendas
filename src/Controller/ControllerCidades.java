@@ -44,7 +44,7 @@ public class ControllerCidades {
     * @param pUF
     * @return ArrayList
     */
-    public ArrayList<ModelCidades> getListaCidadesController(String pUF){
+    public ArrayList<ModelCidades> getListaCidadesUFController(String pUF){
         return this.daoCidades.getListaCidadesUFDAO(pUF);
     }
 
