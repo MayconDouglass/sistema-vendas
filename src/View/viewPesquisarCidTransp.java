@@ -5,8 +5,11 @@
  */
 package View;
 
+import Tools.Uppercase;
 import controller.ControllerCidades;
 import java.util.ArrayList;
+import javax.swing.JTable;
+import javax.swing.ListSelectionModel;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
@@ -23,13 +26,14 @@ public class viewPesquisarCidTransp extends javax.swing.JInternalFrame {
     ModelCidades modelCidades = new ModelCidades();
     ArrayList<ModelCidades> listaModelCidades = new ArrayList<>();
 
+    Uppercase uppercase = new Uppercase();
+
     /**
      * Creates new form ViewFuncaoCadPesquisaCidades
      */
     public viewPesquisarCidTransp() {
         initComponents();
         carregarCidades();
-
     }
 
     /**
@@ -63,12 +67,20 @@ public class viewPesquisarCidTransp extends javax.swing.JInternalFrame {
 
         jtbCidades.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"1", "tesd"}
+
             },
             new String [] {
-                "ID", "Setor"
+                "ID", "Cidade"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jtbCidades.getTableHeader().setReorderingAllowed(false);
         jtbCidades.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -77,10 +89,10 @@ public class viewPesquisarCidTransp extends javax.swing.JInternalFrame {
         });
         jScrollPane1.setViewportView(jtbCidades);
         if (jtbCidades.getColumnModel().getColumnCount() > 0) {
-            jtbCidades.getColumnModel().getColumn(0).setMinWidth(60);
+            jtbCidades.getColumnModel().getColumn(0).setResizable(false);
             jtbCidades.getColumnModel().getColumn(0).setPreferredWidth(60);
-            jtbCidades.getColumnModel().getColumn(0).setMaxWidth(60);
-            jtbCidades.getColumnModel().getColumn(1).setPreferredWidth(60);
+            jtbCidades.getColumnModel().getColumn(1).setResizable(false);
+            jtbCidades.getColumnModel().getColumn(1).setPreferredWidth(250);
         }
 
         jtfPesquisar.addActionListener(new java.awt.event.ActionListener() {
@@ -146,7 +158,7 @@ public class viewPesquisarCidTransp extends javax.swing.JInternalFrame {
                     .addComponent(jtfPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(12, 12, 12)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbCancelar)
                     .addComponent(jButton1)
@@ -164,7 +176,7 @@ public class viewPesquisarCidTransp extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -180,12 +192,11 @@ public class viewPesquisarCidTransp extends javax.swing.JInternalFrame {
 
     private void jtbCidadesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtbCidadesMouseClicked
         int index = jtbCidades.getSelectedRow();
-        TableModel model = jtbCidades.getModel();
 
-        String id = model.getValueAt(index, 0).toString();
-        String Cidade = model.getValueAt(index, 1).toString();
-        viewCadTransp.jtfIdCidade.setText(id);
-        viewCadTransp.jtfNomeCidade.setText(Cidade);
+        Object id = jtbCidades.getValueAt(index, 0);
+        Object cidade = jtbCidades.getValueAt(index, 1);
+        viewCadTransp.jtfIdCidade.setText(String.valueOf(id));
+        viewCadTransp.jtfNomeCidade.setText(String.valueOf(cidade));
         dispose();
     }//GEN-LAST:event_jtbCidadesMouseClicked
 
@@ -202,7 +213,7 @@ public class viewPesquisarCidTransp extends javax.swing.JInternalFrame {
         DefaultTableModel modelo = (DefaultTableModel) jtbCidades.getModel();
         final TableRowSorter<TableModel> classificador = new TableRowSorter<>(modelo);
         jtbCidades.setRowSorter(classificador);
-        String texto = jtfPesquisar.getText();
+        String texto = uppercase.Uppercase(jtfPesquisar.getText());
         String filtro = (String.valueOf(jcbFiltro.getSelectedItem()));
         switch (filtro) {
             case "ID":
