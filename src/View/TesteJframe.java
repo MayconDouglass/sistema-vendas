@@ -16,13 +16,6 @@ import model.ModelAcesso;
  */
 public class TesteJframe extends javax.swing.JFrame {
 
-    ControllerAcesso controllerAcesso = new ControllerAcesso();
-    ModelAcesso modelAcesso = new ModelAcesso();
-    ModelAcesso modelAcesso1 = new ModelAcesso();
-    ModelAcesso modelAcesso2 = new ModelAcesso();
-    ModelAcesso modelAcesso3 = new ModelAcesso();
-    ModelAcesso modelAcesso4 = new ModelAcesso();
-    ArrayList<ModelAcesso> listaModelAcesso = new ArrayList<>();
 
     /**
      * Creates new form TesteJframe
@@ -40,160 +33,21 @@ public class TesteJframe extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        jcbAuth = new javax.swing.JComboBox();
-        jtfNome = new javax.swing.JTextField();
-        jtfKey = new javax.swing.JLabel();
-        jtfNome1 = new javax.swing.JTextField();
-        jcbAuth1 = new javax.swing.JComboBox();
-        jtfKey1 = new javax.swing.JLabel();
-        jtfNome2 = new javax.swing.JTextField();
-        jcbAuth2 = new javax.swing.JComboBox();
-        jtfKey2 = new javax.swing.JLabel();
-        jtfNome3 = new javax.swing.JTextField();
-        jcbAuth3 = new javax.swing.JComboBox();
-        jtfKey3 = new javax.swing.JLabel();
-        jtfMenu = new javax.swing.JLabel();
-
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jButton1.setText("salvar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        jcbAuth.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10" }));
-
-        jtfKey.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jtfKey.setText("1");
-
-        jcbAuth1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11" }));
-
-        jtfKey1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jtfKey1.setText("2");
-
-        jcbAuth2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12" }));
-
-        jtfKey2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jtfKey2.setText("3");
-
-        jcbAuth3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "13" }));
-
-        jtfKey3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jtfKey3.setText("4");
-
-        jtfMenu.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jtfMenu.setText("configurações");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(159, 159, 159)
-                        .addComponent(jButton1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(52, 52, 52)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jtfMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jcbAuth, 0, 59, Short.MAX_VALUE)
-                                    .addComponent(jtfNome)
-                                    .addComponent(jtfKey, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jcbAuth1, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jtfKey1, javax.swing.GroupLayout.DEFAULT_SIZE, 59, Short.MAX_VALUE)
-                                    .addComponent(jtfNome1))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jcbAuth2, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jtfKey2, javax.swing.GroupLayout.DEFAULT_SIZE, 59, Short.MAX_VALUE)
-                                    .addComponent(jtfNome2))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jcbAuth3, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jtfKey3, javax.swing.GroupLayout.DEFAULT_SIZE, 59, Short.MAX_VALUE)
-                                    .addComponent(jtfNome3))))))
-                .addContainerGap(58, Short.MAX_VALUE))
+            .addGap(0, 400, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jtfNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jcbAuth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jtfKey))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jtfNome1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jcbAuth1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jtfKey1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jtfNome2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jcbAuth2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jtfKey2))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jtfNome3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jcbAuth3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jtfKey3)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jtfMenu)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(57, 57, 57))
+            .addGap(0, 300, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
-        modelAcesso.setIdperfil(1);
-        modelAcesso.setIdkey(jtfKey.getText());
-        modelAcesso.setNome(jtfMenu.getText());
-        modelAcesso.setAuth(Integer.parseInt(jcbAuth.getSelectedItem().toString()));
-        listaModelAcesso.add(modelAcesso);
-        modelAcesso = new ModelAcesso();
-        modelAcesso.setIdperfil(1);
-        modelAcesso.setIdkey(jtfKey1.getText());
-        modelAcesso.setNome(jtfMenu.getText());
-        modelAcesso.setAuth(Integer.parseInt(jcbAuth1.getSelectedItem().toString()));
-        listaModelAcesso.add(modelAcesso);
-        modelAcesso = new ModelAcesso();
-        modelAcesso.setIdperfil(1);
-        modelAcesso.setIdkey(jtfKey2.getText());
-        modelAcesso.setNome(jtfMenu.getText());
-        modelAcesso.setAuth(Integer.parseInt(jcbAuth2.getSelectedItem().toString()));
-        listaModelAcesso.add(modelAcesso);
-        modelAcesso = new ModelAcesso();
-        modelAcesso.setIdperfil(1);
-        modelAcesso.setIdkey(jtfKey3.getText());
-        modelAcesso.setNome(jtfMenu.getText());
-        modelAcesso.setAuth(Integer.parseInt(jcbAuth3.getSelectedItem().toString()));
-        listaModelAcesso.add(modelAcesso);
-
-        if (controllerAcesso.salvarListaAcessoController(listaModelAcesso)) {
-            JOptionPane.showMessageDialog(this, "Perfil salvo com sucesso!", "Atenção", JOptionPane.WARNING_MESSAGE);
-            listaModelAcesso.removeAll(listaModelAcesso);
-        } else {
-            JOptionPane.showMessageDialog(this, "Erro ao salvar permissões", "Erro 2", JOptionPane.ERROR_MESSAGE);
-        }
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -231,19 +85,5 @@ public class TesteJframe extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox jcbAuth;
-    private javax.swing.JComboBox jcbAuth1;
-    private javax.swing.JComboBox jcbAuth2;
-    private javax.swing.JComboBox jcbAuth3;
-    private javax.swing.JLabel jtfKey;
-    private javax.swing.JLabel jtfKey1;
-    private javax.swing.JLabel jtfKey2;
-    private javax.swing.JLabel jtfKey3;
-    private javax.swing.JLabel jtfMenu;
-    private javax.swing.JTextField jtfNome;
-    private javax.swing.JTextField jtfNome1;
-    private javax.swing.JTextField jtfNome2;
-    private javax.swing.JTextField jtfNome3;
     // End of variables declaration//GEN-END:variables
 }
