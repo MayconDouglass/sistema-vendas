@@ -140,6 +140,7 @@ private void Teste() {
             // Adiciona o Ícone no SystemTray
             tray.add(trayIcon);
         } catch (AWTException e) {
+            
         }
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables

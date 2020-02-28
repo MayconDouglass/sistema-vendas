@@ -6,32 +6,32 @@
 package View;
 
 import Tools.Uppercase;
-import controller.ControllerCidades;
+import controller.ControllerEstados;
 import java.util.ArrayList;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
-import model.ModelCidades;
+import model.ModelEstados;
 
 /**
  *
  * @author Maycon
  */
-public class viewPesquisarCidTransp extends javax.swing.JInternalFrame {
+public class viewPesquisarUFTransp extends javax.swing.JInternalFrame {
 
-    ControllerCidades controllerCidades = new ControllerCidades();
-    ModelCidades modelCidades = new ModelCidades();
-    ArrayList<ModelCidades> listaModelCidades = new ArrayList<>();
+    ControllerEstados controllerEstados = new ControllerEstados();
+    ModelEstados modelEstados = new ModelEstados();
+    ArrayList<ModelEstados> listaModelEstados = new ArrayList<>();
 
     Uppercase uppercase = new Uppercase();
 
     /**
-     * Creates new form ViewFuncaoCadPesquisaCidades
+     * Creates new form ViewFuncaoCadPesquisaEstados
      */
-    public viewPesquisarCidTransp() {
+    public viewPesquisarUFTransp() {
         initComponents();
-        carregarCidades();
+        carregarEstados();
     }
 
     /**
@@ -46,13 +46,10 @@ public class viewPesquisarCidTransp extends javax.swing.JInternalFrame {
         jPanel1 = new javax.swing.JPanel();
         jbCancelar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jtbCidades = new javax.swing.JTable();
+        jtbEstados = new javax.swing.JTable();
         jtfPesquisar = new javax.swing.JTextField();
         jcbFiltro = new javax.swing.JComboBox();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jcbPlacaUF = new javax.swing.JComboBox();
-        jLabel21 = new javax.swing.JLabel();
 
         setTitle("Pesquisar - Cidades");
 
@@ -63,12 +60,12 @@ public class viewPesquisarCidTransp extends javax.swing.JInternalFrame {
             }
         });
 
-        jtbCidades.setModel(new javax.swing.table.DefaultTableModel(
+        jtbEstados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "ID", "Cidade"
+                "ID", "Estado"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -79,18 +76,18 @@ public class viewPesquisarCidTransp extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
-        jtbCidades.getTableHeader().setReorderingAllowed(false);
-        jtbCidades.addMouseListener(new java.awt.event.MouseAdapter() {
+        jtbEstados.getTableHeader().setReorderingAllowed(false);
+        jtbEstados.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jtbCidadesMouseClicked(evt);
+                jtbEstadosMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(jtbCidades);
-        if (jtbCidades.getColumnModel().getColumnCount() > 0) {
-            jtbCidades.getColumnModel().getColumn(0).setResizable(false);
-            jtbCidades.getColumnModel().getColumn(0).setPreferredWidth(60);
-            jtbCidades.getColumnModel().getColumn(1).setResizable(false);
-            jtbCidades.getColumnModel().getColumn(1).setPreferredWidth(250);
+        jScrollPane1.setViewportView(jtbEstados);
+        if (jtbEstados.getColumnModel().getColumnCount() > 0) {
+            jtbEstados.getColumnModel().getColumn(0).setResizable(false);
+            jtbEstados.getColumnModel().getColumn(0).setPreferredWidth(60);
+            jtbEstados.getColumnModel().getColumn(1).setResizable(false);
+            jtbEstados.getColumnModel().getColumn(1).setPreferredWidth(250);
         }
 
         jtfPesquisar.addActionListener(new java.awt.event.ActionListener() {
@@ -104,20 +101,9 @@ public class viewPesquisarCidTransp extends javax.swing.JInternalFrame {
             }
         });
 
-        jcbFiltro.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "ID", "Cidade" }));
+        jcbFiltro.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "ID", "Estado" }));
 
         jLabel1.setText("Pesquisar");
-
-        jButton1.setText("Por UF");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        jcbPlacaUF.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO" }));
-
-        jLabel21.setText("UF:");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -136,11 +122,6 @@ public class viewPesquisarCidTransp extends javax.swing.JInternalFrame {
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel21)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jcbPlacaUF, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jbCancelar)))
                 .addContainerGap())
@@ -156,13 +137,8 @@ public class viewPesquisarCidTransp extends javax.swing.JInternalFrame {
                     .addComponent(jtfPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(12, 12, 12)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jbCancelar)
-                    .addComponent(jButton1)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jcbPlacaUF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                .addComponent(jbCancelar)
                 .addContainerGap())
         );
 
@@ -188,36 +164,32 @@ public class viewPesquisarCidTransp extends javax.swing.JInternalFrame {
         dispose();
     }//GEN-LAST:event_jbCancelarActionPerformed
 
-    private void jtbCidadesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtbCidadesMouseClicked
-        int index = jtbCidades.getSelectedRow();
+    private void jtbEstadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtbEstadosMouseClicked
+        int index = jtbEstados.getSelectedRow();
 
-        Object id = jtbCidades.getValueAt(index, 0);
-        Object cidade = jtbCidades.getValueAt(index, 1);
-        viewCadTransp.jtfIdCidade.setText(String.valueOf(id));
-        viewCadTransp.jtfNomeCidade.setText(String.valueOf(cidade));
+        Object id = jtbEstados.getValueAt(index, 0);
+        Object cidade = jtbEstados.getValueAt(index, 1);
+        viewCadTransp.jtfIdEstado.setText(String.valueOf(id));
+        viewCadTransp.jtfNomeEstado.setText(String.valueOf(cidade));
         dispose();
-    }//GEN-LAST:event_jtbCidadesMouseClicked
+    }//GEN-LAST:event_jtbEstadosMouseClicked
 
     private void jtfPesquisarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfPesquisarKeyReleased
-        PesquisaCidades();
+        PesquisaEstados();
     }//GEN-LAST:event_jtfPesquisarKeyReleased
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        carregarCidadesUF();
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void PesquisaCidades() {
+    private void PesquisaEstados() {
         //filtrar na tabela
-        DefaultTableModel modelo = (DefaultTableModel) jtbCidades.getModel();
+        DefaultTableModel modelo = (DefaultTableModel) jtbEstados.getModel();
         final TableRowSorter<TableModel> classificador = new TableRowSorter<>(modelo);
-        jtbCidades.setRowSorter(classificador);
+        jtbEstados.setRowSorter(classificador);
         String texto = uppercase.Uppercase(jtfPesquisar.getText());
         String filtro = (String.valueOf(jcbFiltro.getSelectedItem()));
         switch (filtro) {
             case "ID":
                 classificador.setRowFilter(RowFilter.regexFilter(texto, 0));
                 break;
-            case "Cidade":
+            case "Estado":
                 classificador.setRowFilter(RowFilter.regexFilter(texto, 1));
                 break;
             default:
@@ -226,42 +198,28 @@ public class viewPesquisarCidTransp extends javax.swing.JInternalFrame {
 
     }
 
-    private void carregarCidades() {
-        listaModelCidades = controllerCidades.getListaCidadesController();
-        DefaultTableModel modelo = (DefaultTableModel) jtbCidades.getModel();
+    private void carregarEstados() {
+        listaModelEstados = controllerEstados.getListaEstadosController();
+        DefaultTableModel modelo = (DefaultTableModel) jtbEstados.getModel();
         modelo.setNumRows(0);
-        int cont = listaModelCidades.size();
+        int cont = listaModelEstados.size();
         for (int i = 0; i < cont; i++) {
             modelo.addRow(new Object[]{
-                listaModelCidades.get(i).getIdCidade(),
-                listaModelCidades.get(i).getDescricao()
+                listaModelEstados.get(i).getIdestado(),
+                listaModelEstados.get(i).getNome()
             });
         }
     }
 
-    private void carregarCidadesUF() {
-        listaModelCidades = controllerCidades.getListaCidadesUFController(String.valueOf(jcbPlacaUF.getSelectedItem()));
-        DefaultTableModel modelo = (DefaultTableModel) jtbCidades.getModel();
-        modelo.setNumRows(0);
-        int cont = listaModelCidades.size();
-        for (int i = 0; i < cont; i++) {
-            modelo.addRow(new Object[]{
-                listaModelCidades.get(i).getIdCidade(),
-                listaModelCidades.get(i).getDescricao()
-            });
-        }
-    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel21;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton jbCancelar;
     private javax.swing.JComboBox jcbFiltro;
-    public static javax.swing.JComboBox jcbPlacaUF;
-    private javax.swing.JTable jtbCidades;
+    private javax.swing.JTable jtbEstados;
     private javax.swing.JTextField jtfPesquisar;
     // End of variables declaration//GEN-END:variables
 }
