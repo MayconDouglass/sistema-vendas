@@ -71,7 +71,7 @@ public class DAOTransportadora extends ConexaoMySql {
                     + "'" + pModelTransportadora.getEmail() + "',"
                     + "'" + pModelTransportadora.getObservacao() + "',"
                     + "'" + pModelTransportadora.getTranspStatus() + "',"
-                    + "'" + pModelTransportadora.getTranspNumero()+ "'"
+                    + "'" + pModelTransportadora.getTranspNumero() + "'"
                     + ");"
             );
         } catch (Exception e) {
@@ -166,7 +166,7 @@ public class DAOTransportadora extends ConexaoMySql {
      * Verifica se ja existe Transportadora igual na BD
      *
      * @param pTransp
-     * @param pEmpCod 
+     * @param pEmpCod
      * @return
      */
     public ModelTransportadora getTranspVerificaDAO(String pTransp, int pEmpCod) {
@@ -181,6 +181,40 @@ public class DAOTransportadora extends ConexaoMySql {
                     + " WHERE"
                     + " transp_raz = '" + pTransp + "'"
                     + " AND emp_cod = '" + pEmpCod + "'"
+                    + ";"
+            );
+
+            while (this.getResultSet().next()) {
+                modelTransportadora.setCount(this.getResultSet().getInt(1));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            this.fecharConexao();
+        }
+        return modelTransportadora;
+    }
+
+    /**
+     * Verifica se ja existe Transportadora igual na BD
+     *
+     * @param pTransp
+     * @param pEmpCod
+     * @return
+     */
+    public ModelTransportadora getTranspVerificaAltDAO(String pTranspRaz, int pEmpCod, int pTranspCod) {
+        ModelTransportadora modelTransportadora = new ModelTransportadora();
+        try {
+            this.conectar();
+            this.executarSQL(
+                    "SELECT "
+                    + "count(transp_raz)"
+                    + " FROM"
+                    + " comtransportadoras"
+                    + " WHERE"
+                    + " transp_raz = '" + pTranspRaz + "'"
+                    + " AND emp_cod = '" + pEmpCod + "'"
+                    + " AND transp_cod ='" + pTranspCod + "'"
                     + ";"
             );
 
@@ -289,7 +323,55 @@ public class DAOTransportadora extends ConexaoMySql {
                     + "transp_raz = '" + pModelTransportadora.getTranspRaz() + "',"
                     + "transp_fan = '" + pModelTransportadora.getTranspFan() + "',"
                     + "transp_logr = '" + pModelTransportadora.getTranspLogr() + "',"
-                    + "transp_numero = '" + pModelTransportadora.getTranspNumero()+ "',"
+                    + "transp_numero = '" + pModelTransportadora.getTranspNumero() + "',"
+                    + "transp_comp = '" + pModelTransportadora.getTranspComp() + "',"
+                    + "transp_bair = '" + pModelTransportadora.getTranspBair() + "',"
+                    + "transp_cid = '" + pModelTransportadora.getTranspCid() + "',"
+                    + "transp_est = '" + pModelTransportadora.getTranspEst() + "',"
+                    + "transp_cep = '" + pModelTransportadora.getTranspCep() + "',"
+                    + "transp_pessoa = '" + pModelTransportadora.getTranspPessoa() + "',"
+                    + "transp_cgccpf = '" + pModelTransportadora.getTranspCgccpf() + "',"
+                    + "transp_inscuf = '" + pModelTransportadora.getTranspInscuf() + "',"
+                    + "transp_fone1 = '" + pModelTransportadora.getTranspFone1() + "',"
+                    + "transp_fone2 = '" + pModelTransportadora.getTranspFone2() + "',"
+                    + "transp_fone3 = '" + pModelTransportadora.getTranspFone3() + "',"
+                    + "transp_contato = '" + pModelTransportadora.getTranspContato() + "',"
+                    + "transp_carro = '" + pModelTransportadora.getTranspCarro() + "',"
+                    + "transp_placa = '" + pModelTransportadora.getTranspPlaca() + "',"
+                    + "transp_plauf = '" + pModelTransportadora.getTranspPlacauf() + "',"
+                    + "transp_munic = '" + pModelTransportadora.getTranspMunic() + "',"
+                    + "email = '" + pModelTransportadora.getEmail() + "',"
+                    + "observacao = '" + pModelTransportadora.getObservacao() + "',"
+                    + "transp_status = '" + pModelTransportadora.getTranspStatus() + "'"
+                    + " WHERE "
+                    + "emp_cod = '" + pModelTransportadora.getEmpCod() + "'"
+                    + " AND transp_cod = '" + pModelTransportadora.getTranspCod() + "'"
+                    + ";"
+            );
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+            this.fecharConexao();
+        }
+    }
+
+    /**
+     * atualiza Transportadora
+     *
+     * @param pModelTransportadora
+     * @return boolean
+     */
+    public boolean atualizarTransportadora2DAO(ModelTransportadora pModelTransportadora) {
+        try {
+            this.conectar();
+            return this.executarUpdateDeleteSQL(
+                    "UPDATE comtransportadoras SET "
+                    + "emp_cod = '" + pModelTransportadora.getEmpCod() + "',"
+                    + "transp_cod = '" + pModelTransportadora.getTranspCod() + "',"
+                    + "transp_fan = '" + pModelTransportadora.getTranspFan() + "',"
+                    + "transp_logr = '" + pModelTransportadora.getTranspLogr() + "',"
+                    + "transp_numero = '" + pModelTransportadora.getTranspNumero() + "',"
                     + "transp_comp = '" + pModelTransportadora.getTranspComp() + "',"
                     + "transp_bair = '" + pModelTransportadora.getTranspBair() + "',"
                     + "transp_cid = '" + pModelTransportadora.getTranspCid() + "',"
