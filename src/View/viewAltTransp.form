@@ -190,6 +190,7 @@
         <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="a4" green="b5" red="72" type="rgb"/>
         </Property>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
@@ -548,6 +549,9 @@
               <Format format="#0" subtype="-1" type="0"/>
             </Property>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>
@@ -682,7 +686,7 @@
                               <Component id="jtfPlaca" max="32767" attributes="0"/>
                               <Component id="jcbTipoCarro" pref="140" max="32767" attributes="0"/>
                               <Component id="jtfMunicipioCarro" max="32767" attributes="0"/>
-                              <Component id="jcbPlacaUF" alignment="0" min="-2" pref="49" max="-2" attributes="0"/>
+                              <Component id="jcbPlacaUF" alignment="0" min="-2" pref="61" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>

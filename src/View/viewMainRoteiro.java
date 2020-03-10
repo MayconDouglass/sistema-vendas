@@ -6,40 +6,34 @@
 package View;
 
 import Tools.Forms;
-import controller.ControllerCidades;
-import controller.ControllerEstados;
+import static View.viewMainMenu.Desktop;
+import controller.ControllerRoteiro;
 import controller.ControllerTransportadora;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import model.ModelCidades;
-import model.ModelEstados;
-import model.ModelTransportadora;
+import model.ModelRoteiro;
 
 /**
  *
  * @author Maycon
  */
-public class viewMainTransp extends javax.swing.JInternalFrame {
+public class viewMainRoteiro extends javax.swing.JInternalFrame {
+
+    ControllerRoteiro controllerRoteiro = new ControllerRoteiro();
+    ModelRoteiro modelRoteiro = new ModelRoteiro();
+    ArrayList<ModelRoteiro> listaModelRoteiro = new ArrayList<>();
 
     ControllerTransportadora controllerTransportadora = new ControllerTransportadora();
-    ModelTransportadora modelTransportadora = new ModelTransportadora();
-    ArrayList<ModelTransportadora> listaModelTransportadora = new ArrayList<>();
-
-    ControllerCidades controllerCidades = new ControllerCidades();
-    ModelCidades modelCidades = new ModelCidades();
-
-    ControllerEstados controllerEstados = new ControllerEstados();
-    ModelEstados modelEstados = new ModelEstados();
 
     Forms forms = new Forms();
 
     /**
-     * Creates new form viewMainTransp
+     * Creates new form viewCadRoteiro
      */
-    public viewMainTransp() {
+    public viewMainRoteiro() {
         initComponents();
-        carregarTransportadora();
+        carregarRoteiro();
     }
 
     /**
@@ -55,26 +49,28 @@ public class viewMainTransp extends javax.swing.JInternalFrame {
         jComboBox1 = new javax.swing.JComboBox();
         jTextField1 = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jtbTransp = new javax.swing.JTable();
+        jtbRoteiro = new javax.swing.JTable();
         jbInserir = new javax.swing.JButton();
         jbAlterar = new javax.swing.JButton();
         jbExcluir = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
-        setTitle("Compras - Lista Transportadoras");
-        setToolTipText("");
+        setTitle("Clientes - Lista Roteiros");
 
         jLabel1.setText("Filtro:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "ID", "Razão Social", "Status" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "ID", "Descrição", "Status" }));
 
-        jtbTransp.setModel(new javax.swing.table.DefaultTableModel(
+        jtbRoteiro.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "ID", "Razão Social", "Status"
+                "ID", "Descrição", "Status"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -85,14 +81,14 @@ public class viewMainTransp extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jtbTransp);
-        if (jtbTransp.getColumnModel().getColumnCount() > 0) {
-            jtbTransp.getColumnModel().getColumn(0).setResizable(false);
-            jtbTransp.getColumnModel().getColumn(0).setPreferredWidth(30);
-            jtbTransp.getColumnModel().getColumn(1).setResizable(false);
-            jtbTransp.getColumnModel().getColumn(1).setPreferredWidth(300);
-            jtbTransp.getColumnModel().getColumn(2).setResizable(false);
-            jtbTransp.getColumnModel().getColumn(2).setPreferredWidth(50);
+        jScrollPane1.setViewportView(jtbRoteiro);
+        if (jtbRoteiro.getColumnModel().getColumnCount() > 0) {
+            jtbRoteiro.getColumnModel().getColumn(0).setResizable(false);
+            jtbRoteiro.getColumnModel().getColumn(0).setPreferredWidth(50);
+            jtbRoteiro.getColumnModel().getColumn(1).setResizable(false);
+            jtbRoteiro.getColumnModel().getColumn(1).setPreferredWidth(300);
+            jtbRoteiro.getColumnModel().getColumn(2).setResizable(false);
+            jtbRoteiro.getColumnModel().getColumn(2).setPreferredWidth(100);
         }
 
         jbInserir.setText("Inserir");
@@ -124,15 +120,15 @@ public class viewMainTransp extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jTextField1))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 464, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGap(0, 257, Short.MAX_VALUE)
                         .addComponent(jbExcluir)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jbAlterar)
@@ -150,7 +146,7 @@ public class viewMainTransp extends javax.swing.JInternalFrame {
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbInserir)
@@ -163,10 +159,10 @@ public class viewMainTransp extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbInserirActionPerformed
-        viewCadTransp ViewCadTransp = new viewCadTransp();
-        viewMainMenu.Desktop.add(ViewCadTransp);
-        forms.centralizaForm(ViewCadTransp);
-        ViewCadTransp.show();
+        viewCadRoteiro ViewCadRoteiro = new viewCadRoteiro();
+        Desktop.add(ViewCadRoteiro);
+        forms.centralizaForm(ViewCadRoteiro);
+        ViewCadRoteiro.show();
         dispose();
     }//GEN-LAST:event_jbInserirActionPerformed
 
@@ -175,9 +171,9 @@ public class viewMainTransp extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbAlterarActionPerformed
 
     private void jbExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbExcluirActionPerformed
-        int linha, codigoTransportadora, codigoEmpresa;
-        linha = jtbTransp.getSelectedRow();
-        codigoTransportadora = (int) jtbTransp.getValueAt(linha, 0);
+        int linha, codigoRoteiro, codigoEmpresa;
+        linha = jtbRoteiro.getSelectedRow();
+        codigoRoteiro = (int) jtbRoteiro.getValueAt(linha, 0);
         codigoEmpresa = Integer.parseInt(viewMainMenu.lblCodEmp.getText());
         
         try {
@@ -187,12 +183,12 @@ public class viewMainTransp extends javax.swing.JInternalFrame {
                 switch (resposta) {
                     case JOptionPane.YES_OPTION:
 
-                        if (controllerTransportadora.excluirTransportadoraController(codigoEmpresa, codigoTransportadora)) {
-                            JOptionPane.showMessageDialog(this, "Transportadora excluída!", "Atenção", JOptionPane.WARNING_MESSAGE);
-                            this.carregarTransportadora();
+                        if (controllerTransportadora.excluirTransportadoraController(codigoEmpresa, codigoRoteiro)) {
+                            JOptionPane.showMessageDialog(this, "Roteiro excluído!", "Atenção", JOptionPane.WARNING_MESSAGE);
+                            carregarRoteiro();
 
                         } else {
-                            JOptionPane.showMessageDialog(this, "Erro ao excluir transportadora! Existe movimentação para esta empresa", "ERRO", JOptionPane.ERROR_MESSAGE);
+                            JOptionPane.showMessageDialog(this, "Erro ao excluir roteiro! Existe movimentação deste parâmetro para esta empresa", "ERRO", JOptionPane.ERROR_MESSAGE);
                         }
 
                         break;
@@ -214,47 +210,26 @@ public class viewMainTransp extends javax.swing.JInternalFrame {
 
     private void alterarTransportadora() {
         String status = null;
-        int filtroStatusEmail, filtroStatusTransportadora, linha, codigoTransp, codigoEmp;
-        linha = this.jtbTransp.getSelectedRow();
+        int filtroStatus, linha, codigoRoteiro, codigoEmp;
+        linha = this.jtbRoteiro.getSelectedRow();
         try { // resolver isso
-            codigoTransp = (int) this.jtbTransp.getValueAt(linha, 0);
+            codigoRoteiro = (int) this.jtbRoteiro.getValueAt(linha, 0);
             codigoEmp = Integer.parseInt(viewMainMenu.lblCodEmp.getText());
             //recuperar dados do banco
-            modelTransportadora = controllerTransportadora.getTransportadoraController(codigoEmp, codigoTransp);
-            viewAltTransp ViewAltTransportadora = new viewAltTransp();
-            viewMainMenu.Desktop.add(ViewAltTransportadora);
-            forms.centralizaForm(ViewAltTransportadora);
-            ViewAltTransportadora.show();
+            modelRoteiro = controllerRoteiro.getRoteiroEmpController(codigoEmp, codigoRoteiro);
+            viewAltRoteiro ViewAltRoteiro = new viewAltRoteiro();
+            viewMainMenu.Desktop.add(ViewAltRoteiro);
+            forms.centralizaForm(ViewAltRoteiro);
+            ViewAltRoteiro.show();
             dispose();
 
-            viewAltTransp.jtfID.setText(String.valueOf(modelTransportadora.getTranspCod()));
-            viewAltTransp.jtfRazaoSocial.setText(modelTransportadora.getTranspRaz());
-            viewAltTransp.jtfNomeFantasia.setText(modelTransportadora.getTranspFan());
-            viewAltTransp.jtfLogradouro.setText(modelTransportadora.getTranspLogr());
-            viewAltTransp.jtfNumero.setText(String.valueOf(modelTransportadora.getTranspNumero()));
-            viewAltTransp.jtfComplemento.setText(modelTransportadora.getTranspComp());
-            viewAltTransp.jtfBairro.setText(modelTransportadora.getTranspBair());
-            viewAltTransp.jtfIdCidade.setText(String.valueOf(modelTransportadora.getTranspCid()));
-            viewAltTransp.jtfNomeCidade.setText(controllerCidades.getCidadesController(modelTransportadora.getTranspCid()).getDescricao());
-            viewAltTransp.jtfIdEstado.setText(String.valueOf(modelTransportadora.getTranspEst()));
-            viewAltTransp.jtfNomeEstado.setText(controllerEstados.getEstadosController(modelTransportadora.getTranspEst()).getNome());
-            viewAltTransp.jtfCEP.setText(modelTransportadora.getTranspCep());
-            viewAltTransp.jcbPessoa.setSelectedItem(modelTransportadora.getTranspPessoa());
-            viewAltTransp.jtfCGCCPF.setText(modelTransportadora.getTranspCgccpf());
-            viewAltTransp.jtfIE.setText(modelTransportadora.getTranspInscuf());
-            viewAltTransp.jtfTelefone1.setText(modelTransportadora.getTranspFone1());
-            viewAltTransp.jtfTelefone2.setText(modelTransportadora.getTranspFone2());
-            viewAltTransp.jtfTelefone3.setText(modelTransportadora.getTranspFone3());
-            viewAltTransp.jtfContato.setText(modelTransportadora.getTranspContato());
-            viewAltTransp.jcbTipoCarro.setSelectedItem(modelTransportadora.getTranspCarro());
-            viewAltTransp.jtfPlaca.setText(modelTransportadora.getTranspPlaca());
-            viewAltTransp.jcbPlacaUF.setSelectedItem(modelTransportadora.getTranspPlacauf());
-            viewAltTransp.jtfMunicipioCarro.setText(modelTransportadora.getTranspMunic());
-            viewAltTransp.jtfEmail.setText(modelTransportadora.getEmail());
-            viewAltTransp.jtfObservacao.setText(modelTransportadora.getObservacao());
-
-            filtroStatusTransportadora = modelTransportadora.getTranspStatus();
-            switch (filtroStatusTransportadora) {
+            viewAltRoteiro.jtfID.setText(String.valueOf(modelRoteiro.getIdroteiro()));
+            viewAltRoteiro.jtfDescRoteiro.setText(modelRoteiro.getRotDesc());
+            viewAltRoteiro.jtfIdTransp.setText(String.valueOf(modelRoteiro.getTranspPadrao()));
+            viewAltRoteiro.jtfNomeTransp.setText(String.valueOf(controllerTransportadora.getTransportadoraController(codigoEmp, modelRoteiro.getTranspPadrao()).getTranspRaz()));
+            
+            filtroStatus = modelRoteiro.getRotStatus();
+            switch (filtroStatus) {
                 case 1:
                     status = "Ativo";
                     break;
@@ -263,24 +238,24 @@ public class viewMainTransp extends javax.swing.JInternalFrame {
                     break;
             }
 
-            viewAltTransp.jcbStatus.setSelectedItem(String.valueOf(status));
+            viewAltRoteiro.jcbStatus.setSelectedItem(String.valueOf(status));
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Código inválido ou nenhum registro selecionado", "Aviso", JOptionPane.ERROR_MESSAGE);
         }
     }
 
-    private void carregarTransportadora() {
-        listaModelTransportadora = controllerTransportadora.getListaTransportadoraController(Integer.parseInt(viewMainMenu.lblCodEmp.getText()));
+    private void carregarRoteiro() {
+        listaModelRoteiro = controllerRoteiro.getListaRoteiroEmpController(Integer.parseInt(viewMainMenu.lblCodEmp.getText()));
 
-        DefaultTableModel modelo = (DefaultTableModel) jtbTransp.getModel();
+        DefaultTableModel modelo = (DefaultTableModel) jtbRoteiro.getModel();
         modelo.setNumRows(0);
 
-        int cont = listaModelTransportadora.size();
+        int cont = listaModelRoteiro.size();
         String status = null;
         for (int i = 0; i < cont; i++) {
 
-            int filtro = listaModelTransportadora.get(i).getTranspStatus();
+            int filtro = listaModelRoteiro.get(i).getRotStatus();
             switch (filtro) {
                 case 1:
                     status = "Ativo";
@@ -291,8 +266,8 @@ public class viewMainTransp extends javax.swing.JInternalFrame {
 
             }
             modelo.addRow(new Object[]{
-                listaModelTransportadora.get(i).getTranspCod(),
-                listaModelTransportadora.get(i).getTranspRaz(),
+                listaModelRoteiro.get(i).getIdroteiro(),
+                listaModelRoteiro.get(i).getRotDesc(),
                 status
 
             });
@@ -307,6 +282,6 @@ public class viewMainTransp extends javax.swing.JInternalFrame {
     private javax.swing.JButton jbAlterar;
     private javax.swing.JButton jbExcluir;
     private javax.swing.JButton jbInserir;
-    private javax.swing.JTable jtbTransp;
+    private javax.swing.JTable jtbRoteiro;
     // End of variables declaration//GEN-END:variables
 }

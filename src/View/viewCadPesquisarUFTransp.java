@@ -18,7 +18,7 @@ import model.ModelEstados;
  *
  * @author Maycon
  */
-public class viewPesquisarUFTransp extends javax.swing.JInternalFrame {
+public class viewCadPesquisarUFTransp extends javax.swing.JInternalFrame {
 
     ControllerEstados controllerEstados = new ControllerEstados();
     ModelEstados modelEstados = new ModelEstados();
@@ -29,7 +29,7 @@ public class viewPesquisarUFTransp extends javax.swing.JInternalFrame {
     /**
      * Creates new form ViewFuncaoCadPesquisaEstados
      */
-    public viewPesquisarUFTransp() {
+    public viewCadPesquisarUFTransp() {
         initComponents();
         carregarEstados();
     }

@@ -18,7 +18,7 @@ import model.ModelCidades;
  *
  * @author Maycon
  */
-public class viewPesquisarCidTransp extends javax.swing.JInternalFrame {
+public class viewCadPesquisaCidTransp extends javax.swing.JInternalFrame {
 
     ControllerCidades controllerCidades = new ControllerCidades();
     ModelCidades modelCidades = new ModelCidades();
@@ -29,7 +29,7 @@ public class viewPesquisarCidTransp extends javax.swing.JInternalFrame {
     /**
      * Creates new form ViewFuncaoCadPesquisaCidades
      */
-    public viewPesquisarCidTransp() {
+    public viewCadPesquisaCidTransp() {
         initComponents();
         carregarCidades();
     }
@@ -157,12 +157,13 @@ public class viewPesquisarCidTransp extends javax.swing.JInternalFrame {
                 .addGap(12, 12, 12)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jbCancelar)
-                    .addComponent(jButton1)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jcbPlacaUF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jcbPlacaUF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jbCancelar)
+                        .addComponent(jButton1)))
                 .addContainerGap())
         );
 

@@ -24,10 +24,11 @@ import model.ModelTransportadora;
  *
  * @author Maycon
  */
-public class viewCadTransp extends javax.swing.JInternalFrame {
+public class viewAltTransp extends javax.swing.JInternalFrame {
 
     ControllerTransportadora controllerTransportadora = new ControllerTransportadora();
     ModelTransportadora modelTransportadora = new ModelTransportadora();
+    ModelTransportadora modelTransportadoraAlt = new ModelTransportadora();
 
     ControllerProximos controllerProximos = new ControllerProximos();
     ModelProximos modelProximos = new ModelProximos();
@@ -45,11 +46,11 @@ public class viewCadTransp extends javax.swing.JInternalFrame {
     Forms forms = new Forms();
 
     /**
-     * Creates new form viewCadTransp
+     * Creates new form viewAltTransp
      */
-    public viewCadTransp() {
+    public viewAltTransp() {
         initComponents();
-        setProximo();
+
     }
 
     /**
@@ -134,6 +135,7 @@ public class viewCadTransp extends javax.swing.JInternalFrame {
 
         jtfRazaoSocial.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jtfRazaoSocial.setDisabledTextColor(new java.awt.Color(114, 181, 164));
+        jtfRazaoSocial.setEnabled(false);
 
         jLabel3.setText("Nome Fantasia:");
 
@@ -393,7 +395,7 @@ public class viewCadTransp extends javax.swing.JInternalFrame {
                             .addComponent(jtfPlaca)
                             .addComponent(jcbTipoCarro, 0, 140, Short.MAX_VALUE)
                             .addComponent(jtfMunicipioCarro)
-                            .addComponent(jcbPlacaUF, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jcbPlacaUF, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -583,7 +585,7 @@ public class viewCadTransp extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbCancelarActionPerformed
 
     private void jbSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalvarActionPerformed
-        salvarTransportadora();
+        atualizarTransportadora();
     }//GEN-LAST:event_jbSalvarActionPerformed
 
     private void jtfIdCidadeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfIdCidadeFocusLost
@@ -601,18 +603,19 @@ public class viewCadTransp extends javax.swing.JInternalFrame {
             jtfIdCidade.setText("");
         } else {
             jtfNomeCidade.setText(modelCidades.getDescricao());
+
         }
     }//GEN-LAST:event_jtfIdCidadeFocusLost
 
     private void jbPesquisarCidadeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbPesquisarCidadeMouseClicked
-        viewCadPesquisaCidTransp ViewPesquisarCidTransp = new viewCadPesquisaCidTransp();
+        viewAltPesquisaCidTransp ViewPesquisarCidTransp = new viewAltPesquisaCidTransp();
         Desktop.add(ViewPesquisarCidTransp);
         forms.centralizaForm(ViewPesquisarCidTransp);
         ViewPesquisarCidTransp.show();
     }//GEN-LAST:event_jbPesquisarCidadeMouseClicked
 
     private void jbPesquisarEstadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbPesquisarEstadoMouseClicked
-        viewCadPesquisarUFTransp ViewPesquisarUFTransp = new viewCadPesquisarUFTransp();
+        viewAltPesquisarUFTransp ViewPesquisarUFTransp = new viewAltPesquisarUFTransp();
         Desktop.add(ViewPesquisarUFTransp);
         forms.centralizaForm(ViewPesquisarUFTransp);
         ViewPesquisarUFTransp.show();
@@ -644,13 +647,11 @@ public class viewCadTransp extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_jtfIdEstadoFocusLost
 
-    private void salvarTransportadora() {
+    private void atualizarTransportadora() {
         int status = 0, idArea, idPerfil;
         modelTransportadora = controllerTransportadora.getConsultarTranspController(jtfRazaoSocial.getText(), Integer.parseInt(viewMainMenu.lblCodEmp.getText()));
 
-        if (modelTransportadora.getCount() > 0) {
-            JOptionPane.showMessageDialog(this, "Já existe uma transportadora com essa razão social nesta empresa!!", "Erro", JOptionPane.ERROR_MESSAGE);
-        } else {
+        
             modelTransportadora.setTranspCod(Integer.parseInt(jtfID.getText()));
             modelTransportadora.setEmpCod(Integer.parseInt(viewMainMenu.lblCodEmp.getText()));
             modelTransportadora.setTranspRaz(jtfRazaoSocial.getText());
@@ -692,26 +693,24 @@ public class viewCadTransp extends javax.swing.JInternalFrame {
             modelProximos.setProximo(proximo + 1);
             controllerProximos.atualizarSetProximosController(modelProximos);
 
-            if (controllerTransportadora.salvarTransportadoraController(modelTransportadora) > 0) {
-                JOptionPane.showMessageDialog(this, "Erro ao salvar registro!!", "Erro", JOptionPane.ERROR_MESSAGE);
-
-            } else {
-
-                JOptionPane.showMessageDialog(this, "Transportadora salva com sucesso!!", "Atenção", JOptionPane.WARNING_MESSAGE);
+            if (controllerTransportadora.atualizarTransportadora2Controller(modelTransportadora)) {
+                
+                JOptionPane.showMessageDialog(this, "Transportadora atualizada com sucesso!!", "Atenção", JOptionPane.WARNING_MESSAGE);
                 viewMainTransp ViewMainTransp = new viewMainTransp();
                 Desktop.add(ViewMainTransp);
                 forms.centralizaForm(ViewMainTransp);
                 ViewMainTransp.show();
                 dispose();
+                
+            } else {
+                JOptionPane.showMessageDialog(this, "Erro ao salvar registro!!", "Erro", JOptionPane.ERROR_MESSAGE);
 
             }
 
-        }
+        
     }
 
-    private void setProximo() {
-        jtfID.setText(String.valueOf(controllerProximos.getProximosController(4).getProximo()));
-    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -765,7 +764,7 @@ public class viewCadTransp extends javax.swing.JInternalFrame {
     public static javax.swing.JTextField jtfNomeCidade;
     public static javax.swing.JTextField jtfNomeEstado;
     public static javax.swing.JTextField jtfNomeFantasia;
-    private javax.swing.JFormattedTextField jtfNumero;
+    public static javax.swing.JFormattedTextField jtfNumero;
     public static javax.swing.JEditorPane jtfObservacao;
     public static javax.swing.JTextField jtfPlaca;
     public static javax.swing.JTextField jtfRazaoSocial;

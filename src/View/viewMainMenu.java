@@ -96,6 +96,8 @@ public class viewMainMenu extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
         jMenu4 = new javax.swing.JMenu();
         jmiCadCliente = new javax.swing.JMenuItem();
+        jSeparator2 = new javax.swing.JPopupMenu.Separator();
+        jMenuItem2 = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
         jmiTransportadora = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
@@ -321,6 +323,16 @@ public class viewMainMenu extends javax.swing.JFrame {
             }
         });
         jMenu4.add(jmiCadCliente);
+        jMenu4.add(jSeparator2);
+
+        jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F2, 0));
+        jMenuItem2.setText("Roteiro");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenu4.add(jMenuItem2);
 
         jMenu2.add(jMenu4);
 
@@ -328,7 +340,6 @@ public class viewMainMenu extends javax.swing.JFrame {
 
         jMenu5.setText("Compras");
 
-        jmiTransportadora.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F1, 0));
         jmiTransportadora.setText("Transportadora");
         jmiTransportadora.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -441,6 +452,13 @@ public class viewMainMenu extends javax.swing.JFrame {
         ViewMainTransp.show();
     }//GEN-LAST:event_jmiTransportadoraActionPerformed
 
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        viewMainRoteiro ViewMainRoteiro = new viewMainRoteiro();
+        Desktop.add(ViewMainRoteiro);
+        centralizaForm(ViewMainRoteiro);
+        ViewMainRoteiro.show();
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -524,10 +542,12 @@ public class viewMainMenu extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPopupMenu.Separator jSeparator1;
+    private javax.swing.JPopupMenu.Separator jSeparator2;
     public static javax.swing.JButton jbUsuario;
     private javax.swing.JMenuItem jmiCadCliente;
     private javax.swing.JMenuItem jmiEmpresa;
